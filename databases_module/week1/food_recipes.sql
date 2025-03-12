@@ -13,7 +13,8 @@ CREATE TABLE Recipe_Categories (
     category_id INT,
     PRIMARY KEY (recipe_id, category_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
-    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE,
+    INDEX idx_recipe_category (recipe_id, category_id)
 );
 
 CREATE TABLE Ingredients (
@@ -24,22 +25,16 @@ CREATE TABLE Ingredients (
 CREATE TABLE Recipe_Ingredients (
     recipe_id INT,
     ingredient_id INT,
-    amount VARCHAR(100),
     PRIMARY KEY (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
-    FOREIGN KEY (ingredient_id) REFERENCES Ingredients(id) ON DELETE CASCADE
-);
-
-CREATE TABLE Steps (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT NOT NULL
+    FOREIGN KEY (ingredient_id) REFERENCES Ingredients(id) ON DELETE CASCADE,
+    INDEX idx_recipe_ingredient (recipe_id, ingredient_id)
 );
 
 CREATE TABLE Recipe_Steps (
-    recipe_id INT,
-    step_id INT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
     step_number INT NOT NULL,
-    PRIMARY KEY (recipe_id, step_id),
+    description TEXT NOT NULL,
     FOREIGN KEY (recipe_id) REFERENCES Recipes(id) ON DELETE CASCADE,
-    FOREIGN KEY (step_id) REFERENCES Steps(id) ON DELETE CASCADE
 );
