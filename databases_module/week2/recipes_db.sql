@@ -52,20 +52,22 @@ CREATE TABLE recipe_steps (
 
 -- INITIAL DATA
 
-INSERT INTO recipes (name) VALUES
-('No-Bake Cheesecake'),
-('Roasted Brussels Sprouts'),
-('Mac & Cheese'),
-('Tamagoyaki Japanese Omelette'),
-('Potato Salad');
+INSERT INTO recipes (name)
+VALUES
+  ('No-Bake Cheesecake'),
+  ('Roasted Brussels Sprouts'),
+  ('Mac & Cheese'),
+  ('Tamagoyaki Japanese Omelette'),
+  ('Potato Salad');
 
-INSERT INTO categories (name) VALUES
-('Cake'),
-('No-Bake'),
-('Vegetarian'),
-('Vegan'),
-('Gluten-Free'),
-('Japanese');
+INSERT INTO categories (name)
+VALUES
+  ('Cake'),
+  ('No-Bake'),
+  ('Vegetarian'),
+  ('Vegan'),
+  ('Gluten-Free'),
+  ('Japanese');
 
 INSERT INTO recipe_categories (recipe_id, category_id)
 VALUES
